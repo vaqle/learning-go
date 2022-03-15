@@ -13,6 +13,7 @@ func main() {
 	//main2()
 	//ifstatesandswitches()
 	//learnArrays()
+	learnSlices()
 }
 
 func learnArrays() {
@@ -125,7 +126,48 @@ func ifstatesandswitches() {
 
 func learnSlices() {
 	//create a slice
-
+	//slices are similar to arrays but, typed by elements they contain
+	s := make([]string, 3) //Initalily zero if int if not string
+	//We can set values inside the slice by the key
+	s[0] = "hey"
+	s[1] = "xd123"
+	s[2] = "J<<"
+	var a [5]int // this is an array
+	//to get the length of an slice use the func len
+	var length = len(s)
+	//We can add values to the slice by doing append
+	s = append(s, "yomama")
+	//we can add more values from args
+	s = append(s, "ok", "wtf")
+	fmt.Println("Length of Slice", length)
+	fmt.Println("Slices: ", s)
+	fmt.Println("Array", a)
+	fmt.Println("----------------------------------------------")
+	//we can copy slices we will create a empty slice with the amount of elements of the original slice
+	newSlice := make([]string, len(s))
+	copy(newSlice, s) //we copy the values of the old slice into the new slice
+	fmt.Println("Copied: ", newSlice)
+	//Slices support an operator like slice[low:high] so if i wanted to get the values 0 - 4 i would do this
+	l := s[1:3] // gets values 0 - 2
+	fmt.Println("New Values", l)
+	//so if we wanted to get everything but the third value we would do this
+	l = s[:3] // we dont get the 3 value
+	fmt.Println("sl2", l)
+	//If we wanted to get every value exlucding 2 we would do this
+	l = s[2:]
+	fmt.Println("Everything Other then 2", l)
+	//We can also create slices from one line
+	lol := []string{"g", "h", "i"} // this is an array
+	fmt.Println(lol)
+	twoD := make([][]int, 3) //we create slice with 3 arrays
+	for i := 0; i < 3; i++ { // loop 0- 2
+		innerLen := i + 1               // stops at 2
+		twoD[i] = make([]int, innerLen) // this creates moe slices with the length of twod
+		for j := 0; j < innerLen; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println("Two D", twoD)
 }
 
 func main2() {
