@@ -9,6 +9,14 @@ import (
 )
 
 func main() {
+	//learnMutuability()
+	create()
+}
+
+func main1() {
+	//REMEBER the type of the variable must be declared last
+	//var name  string = "XD"
+	learnPointers()
 	fmt.Println(math.Pi)
 	//we can declare vars like this
 	var (
@@ -18,7 +26,7 @@ func main() {
 	println(name, age, ape)
 	test()
 	add(10000, 1000)
-	//fmt.Println(getDay(time.Now().Weekday().String()))
+	fmt.Println(getDay(time.Now().Weekday().String()))
 	fmt.Println(getDay2(time.Now().Weekday().String()))
 	client := &http.Client{}
 	resp, err := client.Get("https://google.com") //if no error then err becomes nil aka NULL
@@ -78,4 +86,59 @@ func getDay2(day string) (weekday string, hour int) {
 		weekday, hour = "Null", 1
 	}
 	return weekday, hour
+}
+
+func zeroval(ival int) {
+	ival = 0 //gets a copy of ival distinct from the one in the caling func
+	// println("IVAL =", ival)
+}
+
+func zeroptr(iptr *int) { //takes in a int pointer
+	*iptr = 0
+}
+
+func learnPointers() {
+	i := 1
+	fmt.Println("initial:", i)
+
+	zeroval(i) //this does not change the value of i so i is still = 1
+	fmt.Println("zeroval:", i)
+
+	zeroptr(&i)                //& is basically the memory of i when we do this it sets i to 0 we pass in the pointer of i
+	fmt.Println("zeroptr:", i) // i is now 0
+	//now &i = to its memory adress
+	fmt.Println("pointer:", &i)
+
+}
+
+type Artist struct {
+	name, genre string
+	songs       int
+}
+
+func newRelease(a Artist) int {
+	a.songs++
+	return a.songs
+}
+
+func learnMutuability() {
+	//Only constants are immutable
+	//once it is created it cannot be changed
+	me := Artist{name: "kaleb", genre: "RNB", songs: 100}
+	fmt.Printf("%s released %dth song \n", me.name, newRelease(me))
+	fmt.Printf("%s has a total of %d songs", me.name, me.songs) //The Total Amount should be 101 but it isnt we need to use a pointer
+}
+
+//example
+
+func newReleases(a *Artist) int {
+	//* takes a pointer from our me variable
+	a.songs++
+	return a.songs
+}
+
+func create() {
+	me := &Artist{name: "kaleb", genre: "RNB", songs: 100}           //& gets a pointer to the value
+	fmt.Printf("%s released %dth song \n", me.name, newReleases(me)) //we need to mutuate it meaning copy
+	fmt.Printf("%s has a total of %d songs", me.name, me.songs)      //The Total Amount should be 101 but it isnt we need to use a pointer
 }
