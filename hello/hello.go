@@ -13,7 +13,8 @@ func main() {
 	//main2()
 	//ifstatesandswitches()
 	//learnArrays()
-	learnSlices()
+	//learnSlices()
+	learnMaps()
 }
 
 func learnArrays() {
@@ -168,6 +169,38 @@ func learnSlices() {
 		}
 	}
 	fmt.Println("Two D", twoD)
+}
+
+func learnMaps() {
+	//we can make maps like this
+	m := make(map[string]int)
+	//associative map
+	//for example
+	// x => 1
+	// y => 2
+	//Will show as this:
+	/// x:1 y:2
+	m["x"] = 1
+	m["y"] = 2
+	//Get the value
+	x := m["x"]
+	fmt.Println("Value of X:", x)
+	//The builtin len returns the number of key/value pairs when called on a map.
+	length := len(m)
+	fmt.Println("Length of Map:", length)
+	//we can delete values from the map with delete
+	delete(m, "x")
+	fmt.Println("Map Values", m)
+	//Shows as y:2
+	_, prs := m["y"]      //all _ is an opitional and returns true if it was found in the map
+	fmt.Println("y", prs) // it will output y true because it was found
+	//now if we do this
+	_, prs = m["x"]
+	fmt.Println("x", prs) // will output x false
+	//_ is just the return value
+	//We can also create single line maps
+	n := map[string]int{"foo": 1, "bar": 2} // foo => 1 bar => 2
+	fmt.Println("map:", n)
 }
 
 func main2() {
