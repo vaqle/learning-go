@@ -140,5 +140,5 @@ func newReleases(a *Artist) int {
 func create() {
 	me := &Artist{name: "kaleb", genre: "RNB", songs: 100}           //& gets a pointer to the value
 	fmt.Printf("%s released %dth song \n", me.name, newReleases(me)) //we need to mutuate it meaning copy
-	fmt.Printf("%s has a total of %d songs", me.name, me.songs)      //The Total Amount should be 101 but it isnt we need to use a pointer
+	fmt.Printf("%s has a total of %d songs", me.name, me.songs)      //The Total Amount is now 101
 }
