@@ -14,7 +14,7 @@ func main() {
 	//ifstatesandswitches()
 	//learnArrays()
 	//learnSlices()
-	learnMaps()
+	//learnMaps()
 }
 
 func learnArrays() {
