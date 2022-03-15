@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"net/http"
 	"time"
 )
 
@@ -17,7 +18,12 @@ func main() {
 	println(name, age, ape)
 	test()
 	add(10000, 1000)
-	fmt.Println(getDay(time.Now().Weekday().String()))
+	//fmt.Println(getDay(time.Now().Weekday().String()))
+	fmt.Println(getDay2(time.Now().Weekday().String()))
+	client := &http.Client{}
+	resp, err := client.Get("https://google.com") //if no error then err becomes nil aka NULL
+	fmt.Println("Error", err)                     //basically we can get an error if any
+	fmt.Println("Response", resp)                 // we ca get the response if any
 }
 
 func test() {
@@ -59,4 +65,17 @@ func getDay(day string) (string, int) {
 		weekday, timeOfDay = "Null", 1
 	}
 	return weekday, timeOfDay
+}
+
+//functions can take named params like
+//they will act as variables
+
+func getDay2(day string) (weekday string, hour int) {
+	switch day {
+	case time.Tuesday.String():
+		weekday, hour = "Tuesday", time.Now().Hour()
+	default:
+		weekday, hour = "Null", 1
+	}
+	return weekday, hour
 }
