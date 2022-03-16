@@ -9,7 +9,8 @@ func main() {
 	//switchWithoutCondition()
 	//workWithPointers()
 	//lol()
-	createAp()
+	//createAp()
+	doSomething()
 }
 
 func switchWithoutCondition() {
@@ -70,4 +71,21 @@ func lol() {
 	p = &j         // point to j
 	*p = *p / 37   // divide j through the pointer
 	fmt.Println(j) // see the new value of j
+}
+
+type Vertex struct {
+	x, y int
+}
+
+func increaseVertexX(x int, vertex Vertex) int {
+	vx := vertex.x
+	return vx + 1
+}
+
+func doSomething() {
+	vertex := Vertex{10, 1}
+	//increaseVertexX(vertex.x, vertex) wont increase
+	p := &vertex
+	p.x = increaseVertexX(vertex.x, vertex)
+	fmt.Println(vertex.x + vertex.y)
 }
