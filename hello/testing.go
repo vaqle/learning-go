@@ -13,7 +13,8 @@ func main() {
 	//doSomething()
 	//array()
 	//sliceLiterals()
-	nilSlices()
+	//nilSlices()
+	sliceWithMake()
 }
 
 func switchWithoutCondition() {
@@ -119,6 +120,40 @@ func nilSlices() {
 	}
 }
 
+func sliceWithMake() {
+	// 0 elements
+	a := make([]int, 3, 5) // this is an array everything is zero valued
+	length := len(a)
+	capacity := cap(a)
+	fmt.Println(length)   // 3
+	fmt.Println(capacity) // 5
+	fmt.Println(a)        // Prints 0,0,0,0 etc
+	xddd()
+	//In depth explanation:
+
+	//len is just the amount of elements inside the array
+	//capacity is how much elements it can hold
+}
+
+func xddd() {
+	a := make([]int, 5)
+	printSlice("a", a)
+
+	b := make([]int, 0, 5)
+	printSlice("b", b)
+
+	c := b[:2]
+	printSlice("c", c)
+
+	d := c[2:5]
+	printSlice("d", d)
+}
+
+func printSlice(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
+}
+
 func sliceLiterals() {
 	s := []int{1, 2, 3, 4}
 	//Slice literal
@@ -127,9 +162,6 @@ func sliceLiterals() {
 	k := []struct {
 		i int
 		b bool
-	}{
-		{2, true},
-		{1, false},
-	}
+	}{{2, true}, {1, false}}
 	fmt.Println(k)
 }
