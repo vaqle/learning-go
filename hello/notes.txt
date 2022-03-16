@@ -184,7 +184,7 @@ func workWithPointers() {
 
 the * is just a pointer to the value
 
-and the & operator just gets its operand 
+and the & operator just gets its operand
 
 	func createAp() {
     	var i, j int = 20, 25
@@ -201,5 +201,48 @@ and the & operator just gets its operand
     }
 }
 
+structs are a collection of fields.
+
+example:
 
 
+type Vertex struct {
+	X int
+	Y int
+}
+
+func main() {
+	fmt.Println(Vertex{1, 2})
+}
+
+we can access struct fields using a dot
+
+example:
+
+func doSomething() {
+	vertex := Vertex{}
+	vertex.x = 10
+	vertex.y = 3
+	fmt.Println(vertex.x + vertex.y)
+}
+
+Struct fields can be accesed through a struct pointer
+
+to access its fields we have to use pointers:
+
+type Vertex struct {
+	x, y int
+}
+
+func increaseVertexX(x int, vertex Vertex) int {
+	vx := vertex.x
+	return vx + 1
+}
+
+func doSomething() {
+	vertex := Vertex{10, 1}
+	//increaseVertexX(vertex.x, vertex) wont increase will still be 11
+	p := &vertex
+	p.x = increaseVertexX(vertex.x, vertex) //will be 12
+	fmt.Println(vertex.x + vertex.y)
+}
