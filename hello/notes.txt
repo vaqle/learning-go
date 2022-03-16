@@ -1,0 +1,205 @@
+Every Go Progam is made up of packages
+
+Programs start from the main package
+
+Good Idea to use Factored Import Statements
+example:
+
+import (
+	"fmt"
+	"math"
+)
+
+In Go, a name is exported if it begins with a capital letter.
+
+for example i := math.pi //wont work has to be math.Pi
+
+
+When a func parameters share the same type you can omit the type from all but the last.
+example:
+
+x int, y int
+
+to
+
+x, y int
+
+a function can return any number of results
+
+The swap function returns two strings
+
+func swap(x, y string) (string, string) {
+return y, x
+}
+
+func main() {
+a, b := swap("hello", "world")
+fmt.Println(a, b)
+}   //prints world hello
+
+In Go Return values may be named. if they are named they are like variables/
+
+An return statement without arguments returns the named return values. 
+Which is called a naked return.
+
+Naked Returns should only be used in short functions
+
+Example:
+
+func split(sum int) (x, y int) {
+x = sum * 4 / 9
+y = sum - x
+return
+}
+
+returns 7 and 10
+
+var statement declares a list of variables
+
+example
+var a, b, c bool
+
+var i int // 0
+
+a var declaration can be initliazed one per variable
+if the init is present the type will be ommited and will take type of the initalizer for example:
+var c, python, java = true, false, "no! 
+
+so c = bool py = bool java = string
+
+
+short variable declarations inside a function
+we can use := to replace the var declaration.
+
+outside a func we cannot use :=
+
+Variables declared without an initial value are zero
+
+for example:
+
+var b int
+println(b) //b = 0
+
+if b is a string it would be  ""
+
+if b is a bool it would be false and so on
+
+for loops have 3 componets
+
+the init statement
+the condition
+and the post statement
+
+the init statement is usually a variable declaration
+
+the variables are only visible inside the for loop
+
+the for loop will stop iterating once it is false
+
+the init and post statements are opitonal
+
+for exmaple:
+
+func main() {
+sum := 1
+for; sum < 100;{
+sum += sum
+}
+println(sum)
+}
+
+Basically for is the while loop
+
+
+For switch statements in go it will only run the selected case and not all of them
+
+also in switch statements you cant use integers or constants
+Switch statements evaluate cases from top to bottom
+for example:
+
+func main() {
+fmt.Print("Go runs on ")
+switch os := runtime.GOOS; os {
+case "darwin":
+fmt.Println("OS X.")
+case "linux":
+fmt.Println("Linux.")
+default:
+// freebsd, openbsd,
+// plan9, windows...
+fmt.Printf("%s.\n", os)
+}
+}
+
+Switch statements can be written without conditions
+
+Ex:
+
+func switchWithoutCondition() {
+t := time.Now()
+switch {
+case t.Hour() < 12:
+fmt.Println("gg")
+default:
+fmt.Println("IDK")
+}
+}
+
+A defer statement defers the execution of a function until the surrounding function returns.
+
+
+The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+
+func main() {
+defer fmt.Println("world")
+fmt.Println("hello")  //will print hello first
+}
+
+
+//pointers
+
+A pointer holds memory address of a value.
+
+The Type *T is a pointer to a T value. Its zero value is nil
+the & operator generates a pointer to its operand
+
+example
+
+func workWithPointers() {
+
+  var p *int
+	i := 42
+	p = &i //generate its operand
+	//it points to 42
+	//so if i did this
+	fmt.Println(p) //output would be 0xc000016088
+	//however if i did this
+	fmt.Println(*p) //output is 42
+
+	//if we wanted to update p we would do this
+	*p = 21 //this is dereferencing or inderecting
+	println(*p) //outputs 21 set i through the pointer of p
+
+	An example i made:
+
+the * is just a pointer to the value
+
+and the & operator just gets its operand 
+
+	func createAp() {
+    	var i, j int = 20, 25
+    	k := &j
+    	p := &i    //establish a pointer
+    	println(p) //should output adresss
+    	println(k) //should output adresss
+    	//now if we want to get i we would do this
+    	result := *p
+    	fmt.Println("Result of I:", result) //outputs 20
+    	*p = 10
+    	println(*p) //should be 10
+
+    }
+}
+
+
+
