@@ -246,3 +246,33 @@ func doSomething() {
 	p.x = increaseVertexX(vertex.x, vertex) //will be 12
 	fmt.Println(vertex.x + vertex.y)
 }
+
+
+arrays cannot be resized
+
+ex of some arrays:
+
+func array() {
+
+	var a [10]string
+	//a = array name 10 = size int = type
+	a[0] = "xd"
+	a[1] = "ok"
+	strings := [3]string{"lol", "xd", "pov"}
+	fmt.Println(strings)
+}
+
+slices are dynmaically sized and flexible they are more common then arrays
+The Type []T os a slice with the elements of type T
+
+primes := [6]int{2, 3, 5, 7, 11, 13} // type = int
+
+Slices do not store data
+
+
+
+
+
+
+
+
