@@ -24,7 +24,8 @@ func main() {
 	u := uint(floated)
 	fmt.Println(lol, floated, u)
 	//learnAssertion()
-	learnstructs()
+	//learnstructs()
+	ok()
 }
 
 func learnAssertion() {
@@ -87,4 +88,9 @@ func learnstructs() {
 	event.Date = time.Now()
 	fmt.Printf("Event on %s location (%f %f)",
 		event.Date, event.Lat, event.Lon)
+}
+
+func ok() {
+	var b int
+	println(b)
 }
