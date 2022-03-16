@@ -11,6 +11,7 @@ func main() {
 	//lol()
 	//createAp()
 	doSomething()
+	array()
 }
 
 func switchWithoutCondition() {
@@ -88,4 +89,19 @@ func doSomething() {
 	p := &vertex
 	p.x = increaseVertexX(vertex.x, vertex)
 	fmt.Println(vertex.x + vertex.y)
+}
+
+func array() {
+
+	var a [10]string
+	//a = array name 10 = size int = type
+	a[0] = "xd"
+	a[1] = "ok"
+	strings := [3]string{"lol", "xd", "pov"}
+	fmt.Println(strings)
+	fmt.Println("_------------------------------")
+
+	//Slices
+	var s []string = strings[1:3]
+	fmt.Println(s)
 }
