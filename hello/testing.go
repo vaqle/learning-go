@@ -10,8 +10,10 @@ func main() {
 	//workWithPointers()
 	//lol()
 	//createAp()
-	doSomething()
-	array()
+	//doSomething()
+	//array()
+	//sliceLiterals()
+	nilSlices()
 }
 
 func switchWithoutCondition() {
@@ -104,4 +106,30 @@ func array() {
 	//Slices
 	var s []string = strings[1:3]
 	fmt.Println(s)
+}
+
+func nilSlices() {
+	var s []int // slice
+	s = append(s, 123)
+	//fmt.Println("Info: ", s, len(s), cap(s))
+	if s == nil {
+		fmt.Println("Slice is nil")
+	} else {
+		fmt.Println(s)
+	}
+}
+
+func sliceLiterals() {
+	s := []int{1, 2, 3, 4}
+	//Slice literal
+	fmt.Println(s)
+
+	k := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{1, false},
+	}
+	fmt.Println(k)
 }
