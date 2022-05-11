@@ -9,6 +9,8 @@ var (
 	amount = 10
 	mutex  sync.Mutex
 )
+//MUTEX JUST PREVENTS CONCCURRENT GOROUTINE ACCESS
+
 
 //we use mutex to prevent the code from running concurrently meaning twice
 //so lets say i had a function to add matches to the game list
